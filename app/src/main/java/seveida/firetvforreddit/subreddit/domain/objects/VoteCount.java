@@ -1,10 +1,15 @@
 package seveida.firetvforreddit.subreddit.domain.objects;
 
+import androidx.annotation.NonNull;
+
 public class VoteCount {
 
-    int up;
-    int down;
+    @NonNull public final Integer up;
+    @NonNull public final Integer down;
 
-    //TODO
+    public VoteCount(@NonNull Integer up, @NonNull Integer down) {
+        this.up = up;
+        this.down = down;
+    }
 
 }
