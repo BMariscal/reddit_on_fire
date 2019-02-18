@@ -3,7 +3,7 @@ package seveida.firetvforreddit.subreddit.domain.objects;
 import android.net.Uri;
 
 
-import java.text.DateFormat;
+import java.time.LocalDateTime;
 
 import androidx.annotation.NonNull;
 
@@ -14,12 +14,12 @@ public class ThreadMetadata {
     @NonNull public final String title;
     @NonNull public final String op;
     @NonNull public final VoteCount voteCount;
-    @NonNull public final DateFormat created;
+    @NonNull public final LocalDateTime created;
     public final int commentCount;
 
     public ThreadMetadata(@NonNull Integer threadId, @NonNull Uri imageUrl,
                           @NonNull String title, @NonNull String op,
-                          @NonNull VoteCount voteCount, @NonNull DateFormat created,
+                          @NonNull VoteCount voteCount, @NonNull LocalDateTime created,
                           int commentCount) {
         this.threadId = threadId;
         this.imageUrl = imageUrl;

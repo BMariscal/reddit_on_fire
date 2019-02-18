@@ -1,6 +1,7 @@
 package seveida.firetvforreddit.subreddit.domain.objects;
 
-import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 
@@ -9,17 +10,19 @@ public class Comment {
     @NonNull public final String commentId;
     @NonNull public final UserMetadata userMetadata;
     @NonNull public final VoteCount voteCount;
-    @NonNull public final DateFormat created;
+    @NonNull public final LocalDateTime created;
     @NonNull public final String content;
+    @NonNull public final List<Comment> childComments;
 
     public Comment(@NonNull String commentId, @NonNull UserMetadata userMetadata,
-                   @NonNull VoteCount voteCount, @NonNull DateFormat created,
-                   @NonNull String content) {
+                   @NonNull VoteCount voteCount, @NonNull LocalDateTime created,
+                   @NonNull String content, @NonNull List<Comment> childComments) {
         this.commentId = commentId;
         this.userMetadata = userMetadata;
         this.voteCount = voteCount;
         this.created = created;
         this.content = content;
+        this.childComments = childComments;
     }
 
 }

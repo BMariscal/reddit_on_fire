@@ -9,15 +9,12 @@ public class ThreadDetails {
 
     @NonNull public final ThreadMetadata threadMetadata;
     @NonNull public final String content;
-    @NonNull public final List<Comment> commentList;
-    public final int commentCount;
+    @NonNull public final List<Comment> topLevelComments;
 
     public ThreadDetails(@NonNull ThreadMetadata threadMetadata,
-                         @NonNull String content, @NonNull List<Comment> commentList,
-                         int commentCount) {
+                         @NonNull String content, @NonNull List<Comment> topLevelComments) {
         this.threadMetadata = threadMetadata;
         this.content = content;
-        this.commentList = commentList;
-        this.commentCount = commentCount;
+        this.topLevelComments = topLevelComments;
     }
 }

@@ -6,17 +6,17 @@ import androidx.annotation.NonNull;
 
 public class SubredditMetadata {
 
-    @NonNull public final Uri url_path;
-    @NonNull public final Uri avatar;
+    @NonNull public final Uri urlPath;
+    @NonNull public final Uri avatarImage;
     @NonNull public final String subredditId;
-    @NonNull public final String name;
+    @NonNull public final String displayName;
 
-    public SubredditMetadata(@NonNull Uri url_path, @NonNull Uri avatar,
-                             @NonNull String subredditId, @NonNull String name) {
-        this.url_path = url_path;
-        this.avatar = avatar;
+    public SubredditMetadata(@NonNull Uri urlPath, @NonNull Uri avatarImage,
+                             @NonNull String subredditId, @NonNull String displayName) {
+        this.urlPath = urlPath;
+        this.avatarImage = avatarImage;
         this.subredditId = subredditId;
-        this.name = name;
+        this.displayName = displayName;
     }
 
 }
