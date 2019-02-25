@@ -1,7 +1,5 @@
 package seveida.firetvforreddit.domain.objects;
 
-import android.net.Uri;
-
 import java.util.ArrayList;
 import java.util.List;
 

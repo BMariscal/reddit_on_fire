@@ -35,4 +35,6 @@ dependencies {
 
     // Java Time backport
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.2'
+
+    testImplementation "org.robolectric:robolectric:4.0.2"
 }
