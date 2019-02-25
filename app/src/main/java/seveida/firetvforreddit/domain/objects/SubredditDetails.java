@@ -1,4 +1,4 @@
-package seveida.firetvforreddit.subreddit.domain.objects;
+package seveida.firetvforreddit.domain.objects;
 
 import java.util.List;
 
