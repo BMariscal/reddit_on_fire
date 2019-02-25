@@ -3,26 +3,30 @@ package seveida.firetvforreddit.domain.objects;
 import android.net.Uri;
 
 
-import java.time.LocalDateTime;
+import org.threeten.bp.Instant;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.ZoneId;
 
 import androidx.annotation.NonNull;
+import seveida.firetvforreddit.response.objects.Child;
+import seveida.firetvforreddit.response.objects.Data_;
 
 public class ThreadMetadata {
 
-    @NonNull public final Integer threadId;
-    @NonNull public final Uri imageUrl;
+    @NonNull public final String threadId;
+    @NonNull public final Uri previewImageUrl;
     @NonNull public final String title;
-    @NonNull public final String op;
+    @NonNull public final UserMetadata op;
     @NonNull public final VoteCount voteCount;
     @NonNull public final LocalDateTime created;
     public final int commentCount;
 
-    public ThreadMetadata(@NonNull Integer threadId, @NonNull Uri imageUrl,
-                          @NonNull String title, @NonNull String op,
+    public ThreadMetadata(@NonNull String threadId, @NonNull Uri previewImageUrl,
+                          @NonNull String title, @NonNull UserMetadata op,
                           @NonNull VoteCount voteCount, @NonNull LocalDateTime created,
                           int commentCount) {
         this.threadId = threadId;
-        this.imageUrl = imageUrl;
+        this.previewImageUrl = previewImageUrl;
         this.title = title;
         this.op = op;
         this.voteCount = voteCount;
@@ -30,5 +34,22 @@ public class ThreadMetadata {
         this.commentCount = commentCount;
     }
 
+    static ThreadMetadata fromResponse(Child response) {
+        Data_ data = response.data;
+
+        String id = data.id;
+        Uri imageUri = Uri.parse(data.thumbnail);
+        String title = data.title;
+
+        String opName = data.author;
+        String opId = data.authorFullname;
+        UserMetadata op = new UserMetadata(opId, opName);
+
+        VoteCount voteCount = new VoteCount(data.ups, data.downs);
+
+        LocalDateTime created = Instant.ofEpochMilli(data.created).atZone(ZoneId.systemDefault()).toLocalDateTime();
+        int commentCount = data.numComments;
+        return new ThreadMetadata(id, imageUri, title, op, voteCount, created, commentCount);
+    }
 
 }

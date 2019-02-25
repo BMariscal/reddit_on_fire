@@ -3,6 +3,7 @@ package seveida.firetvforreddit.domain.objects;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import seveida.firetvforreddit.response.objects.SubredditResponse;
 
 public class SubredditMetadata {
 
@@ -19,4 +20,13 @@ public class SubredditMetadata {
         this.displayName = displayName;
     }
 
+    static SubredditMetadata fromResponse(SubredditResponse response) {
+        String subredditName = response.data.children.get(0).data.subreddit;
+        String subredditId = response.data.after;
+
+        Uri urlPath = Uri.parse("www.example.com"); // TODO
+        Uri image = Uri.parse("www.example.com"); // TODO
+
+        return new SubredditMetadata(urlPath, image, subredditId, subredditName);
+    }
 }

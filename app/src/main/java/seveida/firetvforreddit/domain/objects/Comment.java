@@ -1,6 +1,7 @@
 package seveida.firetvforreddit.domain.objects;
 
-import java.time.LocalDateTime;
+import org.threeten.bp.LocalDateTime;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
